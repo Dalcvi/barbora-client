@@ -11,8 +11,8 @@ export const SiteNavbar = () => {
       <Nav>
         <Nav.Link onClick={() => navigateTo('/')}>Pagrindinis</Nav.Link>
         <Nav.Link onClick={() => navigateTo('/uzsakymai')}>Užsakymai</Nav.Link>{' '}
-        <Nav.Link href="#">Login</Nav.Link>
-        <Nav.Link href="#">Register</Nav.Link>
+        <Nav.Link href="#">Prisijungti</Nav.Link>
+        <Nav.Link href="#">Registruotis</Nav.Link>
       </Nav>
     </Navbar>
   );

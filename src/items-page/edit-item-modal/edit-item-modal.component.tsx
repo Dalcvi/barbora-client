@@ -120,10 +120,10 @@ export const EditItemModal = ({ handleClose, id }: { handleClose: () => void; id
 
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>
-          Close
+          Uždaryti
         </Button>
         <Button variant="primary" onClick={handleSubmit}>
-          Pridėti
+          Pakeisti
         </Button>
       </Modal.Footer>
     </Modal.Dialog>

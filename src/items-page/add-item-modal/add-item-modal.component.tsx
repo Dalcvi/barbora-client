@@ -111,7 +111,7 @@ export const AddItemModal = ({ handleClose }: { handleClose: () => void }) => {
 
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>
-          Close
+          Uždaryti
         </Button>
         <Button variant="primary" onClick={handleSubmit}>
           Pridėti

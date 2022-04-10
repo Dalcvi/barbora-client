@@ -91,10 +91,10 @@ export const FinishOrderModal = ({ handleClose }: { handleClose: () => void }) =
 
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>
-          Close
+          Uždaryti
         </Button>
         <Button variant="primary" onClick={handleSubmit}>
-          Pridėti
+          Užsakyti
         </Button>
       </Modal.Footer>
     </Modal.Dialog>
