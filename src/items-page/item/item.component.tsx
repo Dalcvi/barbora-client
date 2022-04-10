@@ -81,7 +81,12 @@ export const Item = ({
               max={quantity}
               min={0}
             />
-            <Button variant="primary" className={styles.button} onClick={onAddClick}>
+            <Button
+              variant="primary"
+              className={styles.button}
+              onClick={onAddClick}
+              disabled={quantity === 0}
+            >
               Į krepšelį
             </Button>
           </div>

@@ -9,7 +9,7 @@ export const CategoriesList = () => {
       <ListGroupItem className={styles.listItem}>KATEGORIJA</ListGroupItem>
       <ListGroupItem className={styles.listItem}>KATEGORIJA</ListGroupItem>
       <ListGroupItem className={styles.listItem}>KATEGORIJA</ListGroupItem>
-      <ListGroupItem className={styles.listItem}>KREPSELIS</ListGroupItem>
+      <ListGroupItem className={styles.listItem}>KREPŠELIS</ListGroupItem>
     </ListGroup>
   );
 };
