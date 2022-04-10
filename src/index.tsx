@@ -6,6 +6,7 @@ import { App } from './app';
 import { store } from './store';
 import { Provider } from 'react-redux';
 import axios from 'axios';
+import { BrowserRouter } from 'react-router-dom';
 
 axios.defaults.baseURL = 'http://localhost:8080/api';
 
@@ -14,8 +15,10 @@ const root = createRoot(container!);
 
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <BrowserRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>
 );

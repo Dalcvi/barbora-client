@@ -5,12 +5,10 @@ import { Orders } from '../orders-page/orders.component';
 
 export const AppRouter = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route index element={<ItemsPage />} />
-        <Route path="/puslapis-:page" element={<ItemsPage />} />
-        <Route path="/uzsakymai" element={<Orders />} />
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route index element={<ItemsPage />} />
+      <Route path="/puslapis-:page" element={<ItemsPage />} />
+      <Route path="/uzsakymai" element={<Orders />} />
+    </Routes>
   );
 };

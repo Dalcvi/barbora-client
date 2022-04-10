@@ -1,15 +1,18 @@
 import React from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './site-navbar.module.css';
 
 export const SiteNavbar = () => {
+  const navigateTo = useNavigate();
   return (
     <Navbar bg="light" expand="lg" sticky="top" className={styles.navbar}>
       <Navbar.Brand href="#home">BARBORA</Navbar.Brand>
       <Nav>
-        <Nav.Link href="#home">Home</Nav.Link>
-        <Nav.Link href="#Login">Login</Nav.Link>
-        <Nav.Link href="#Register">Register</Nav.Link>
+        <Nav.Link onClick={() => navigateTo('/')}>Pagrindinis</Nav.Link>
+        <Nav.Link onClick={() => navigateTo('/uzsakymai')}>Užsakymai</Nav.Link>{' '}
+        <Nav.Link href="#">Login</Nav.Link>
+        <Nav.Link href="#">Register</Nav.Link>
       </Nav>
     </Navbar>
   );

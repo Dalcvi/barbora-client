@@ -21,6 +21,7 @@ export const EditItemModal = ({ handleClose, id }: { handleClose: () => void; id
       name: itemInfo.name,
       description: formData.get('description'),
       price: formData.get('price'),
+      image_url: formData.get('image'),
       weight: formData.get('weight'),
       quantity: Number(formData.get('quantity')),
     };
@@ -73,6 +74,18 @@ export const EditItemModal = ({ handleClose, id }: { handleClose: () => void; id
               placeholder="0"
               step={0.01}
               min={0}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="image">Paveiksliukas</label>
+            <input
+              type="url"
+              className="form-control"
+              id="image"
+              name="image"
+              defaultValue={itemInfo.image_url}
+              placeholder="Paveiksliukas"
               required
             />
           </div>
