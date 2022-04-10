@@ -30,7 +30,7 @@ export const ItemsPage = () => {
           dispatch(openModal({ modal: Modals.AddItem }));
         }}
       >
-        Prideti preke
+        Prideti prekę
       </Button>
     </>
   );
