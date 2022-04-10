@@ -31,6 +31,7 @@ export const Cart = () => {
           <Button
             variant="primary"
             className={styles.checkoutButton}
+            disabled={cartItems.length === 0}
             onClick={() => {
               dispatch(openModal({ modal: Modals.FinishOrder }));
             }}
