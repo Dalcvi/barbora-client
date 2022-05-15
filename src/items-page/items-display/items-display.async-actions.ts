@@ -7,14 +7,20 @@ import { setLoader } from '../../loader';
 export const fetchItems = createAsyncThunk(
   'items/fetchItems',
   async (
-    { categoryName, searchValue }: { categoryName: string; searchValue: string },
+    {
+      categoryName,
+      searchValue,
+      areThereAnyItemsLoaded,
+    }: { categoryName: string; searchValue: string; areThereAnyItemsLoaded: boolean },
     { dispatch }
   ) => {
     try {
       const decodedCategoryName = decodeURIComponent(categoryName);
       const categoryNameSearchParam = decodedCategoryName ? `&category=${decodedCategoryName}` : '';
       const searchValueSearchParam = searchValue ? `&q=${searchValue}` : '';
-      dispatch(setLoader({ key: 'items', value: true }));
+      if (!areThereAnyItemsLoaded) {
+        dispatch(setLoader({ key: 'items', value: true }));
+      }
       const response = await axios.get<ItemData[]>(
         '/item?' + categoryNameSearchParam + searchValueSearchParam
       );

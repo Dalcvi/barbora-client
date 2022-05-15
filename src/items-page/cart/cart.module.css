@@ -19,9 +19,14 @@
 .checkoutButtonWrapper {
     display: flex;
     height: 10%;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     border-top: 1px solid rgba(0, 0, 0, .125);
+}
+.totalPrice {
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
 .checkoutButton {

@@ -14,6 +14,10 @@ export const Cart = () => {
   const cartItems = Object.keys(cart).map(key => {
     return cart[Number(key)];
   });
+  const totalPrice = Object.keys(cart).reduce((acc, key) => {
+    const total = acc + items[Number(key)].price * cart[Number(key)].quantity;
+    return total;
+  }, 0);
 
   return (
     <div className={styles.cart}>
@@ -28,6 +32,9 @@ export const Cart = () => {
           ))}
         </div>
         <div className={styles.checkoutButtonWrapper}>
+          {cartItems.length !== 0 && (
+            <p className={styles.totalPrice}>Pilna kaina: {totalPrice}€</p>
+          )}
           <Button
             variant="primary"
             className={styles.checkoutButton}

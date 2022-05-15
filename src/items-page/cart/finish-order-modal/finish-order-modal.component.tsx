@@ -1,14 +1,16 @@
 import axios from 'axios';
 import React from 'react';
 import { Button, Modal } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import { clearCart } from '..';
 import { useAppDispatch, useAppSelector } from '../../../store';
 import styles from './finish-order-modal.module.css';
 
 export const FinishOrderModal = ({ handleClose }: { handleClose: () => void }) => {
   const dispatch = useAppDispatch();
-  const cartItems = useAppSelector((state) => state.cart);
+  const cartItems = useAppSelector(state => state.cart);
   const formRef = React.useRef<HTMLFormElement>(null);
+  const navigateTo = useNavigate();
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -16,12 +18,15 @@ export const FinishOrderModal = ({ handleClose }: { handleClose: () => void }) =
     if (!form) {
       return;
     }
-    const cartItemsArray = Object.values(cartItems).map((item) => ({
+    const cartItemsArray = Object.values(cartItems).map(item => ({
       item_id: item.itemId,
       quantity: item.quantity,
     }));
 
     const formData = new FormData(form);
+    if ((formData.get('postal_code') as unknown as string)?.length !== 5) {
+      return;
+    }
     const data = {
       address: formData.get('address'),
       postal_code: formData.get('postal_code'),
@@ -32,6 +37,7 @@ export const FinishOrderModal = ({ handleClose }: { handleClose: () => void }) =
 
     await axios.post(`order`, data);
     dispatch(clearCart());
+    navigateTo('/uzsakymai');
     handleClose();
   };
 
@@ -62,6 +68,8 @@ export const FinishOrderModal = ({ handleClose }: { handleClose: () => void }) =
               id="postal_code"
               name="postal_code"
               placeholder="Pašto kodas"
+              minLength={5}
+              maxLength={5}
               required
             />
           </div>

@@ -14,7 +14,13 @@ export const ItemsDisplay = ({ searchValue }: { searchValue: string }) => {
   const isLoading = useAppSelector(state => state.loader['items']);
 
   useEffect(() => {
-    dispatch(fetchItems({ categoryName: params.category || '', searchValue: searchValue }));
+    dispatch(
+      fetchItems({
+        categoryName: params.category || '',
+        searchValue: searchValue,
+        areThereAnyItemsLoaded: Object.keys(items).length > 0,
+      })
+    );
   }, [dispatch, params.category, searchValue]);
   if (isLoading) {
     return (
@@ -26,6 +32,9 @@ export const ItemsDisplay = ({ searchValue }: { searchValue: string }) => {
     );
   }
   const itemList = Object.keys(items).map(key => {
+    if (searchValue && !items[Number(key)].name.toLowerCase().includes(searchValue.toLowerCase())) {
+      return null;
+    }
     const itemProps = items[Number(key)] as ItemData;
     return (
       <Item
