@@ -1,0 +1,7 @@
+.formInput {
+    width: 100%;
+}
+
+.formInput:not(:first-child) {
+    margin-top: 20px;
+}

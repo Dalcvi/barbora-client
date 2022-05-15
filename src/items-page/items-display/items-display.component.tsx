@@ -7,15 +7,15 @@ import { fetchItems } from './';
 import { ITEMS_PER_PAGE } from './items-display.constant';
 import styles from './items-display.module.css';
 
-export const ItemsDisplay = () => {
+export const ItemsDisplay = ({ searchValue }: { searchValue: string }) => {
   const dispatch = useAppDispatch();
   const params = useParams();
-  const items = useAppSelector((state) => state.items);
-  const isLoading = useAppSelector((state) => state.loader['items']);
+  const items = useAppSelector(state => state.items);
+  const isLoading = useAppSelector(state => state.loader['items']);
 
   useEffect(() => {
-    dispatch(fetchItems());
-  }, [dispatch]);
+    dispatch(fetchItems({ categoryName: params.category || '', searchValue: searchValue }));
+  }, [dispatch, params.category, searchValue]);
   if (isLoading) {
     return (
       <div>
@@ -25,7 +25,7 @@ export const ItemsDisplay = () => {
       </div>
     );
   }
-  const itemList = Object.keys(items).map((key) => {
+  const itemList = Object.keys(items).map(key => {
     const itemProps = items[Number(key)] as ItemData;
     return (
       <Item

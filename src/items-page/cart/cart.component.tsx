@@ -9,9 +9,9 @@ import { removeItem } from './cart.slice';
 
 export const Cart = () => {
   const dispatch = useAppDispatch();
-  const cart = useAppSelector((state) => state.cart);
-  const items = useAppSelector((state) => state.items);
-  const cartItems = Object.keys(cart).map((key) => {
+  const cart = useAppSelector(state => state.cart);
+  const items = useAppSelector(state => state.items);
+  const cartItems = Object.keys(cart).map(key => {
     return cart[Number(key)];
   });
 
@@ -19,7 +19,7 @@ export const Cart = () => {
     <div className={styles.cart}>
       <div className={styles.contentContainer}>
         <div className={styles.cartItems}>
-          {cartItems.map((cartItem) => (
+          {cartItems.map(cartItem => (
             <CartItem
               key={cartItem.itemId}
               item={items[cartItem.itemId]}
@@ -48,8 +48,10 @@ const CartItem = ({ item, quantityInCart }: { item: ItemData; quantityInCart: nu
   const dispatch = useAppDispatch();
   return (
     <div className={styles.cartItem}>
-      <div className={styles.cartItemName}>Prekė: {item.name}</div>
-      <div className={styles.cartItemQuantity}>Kiekis: {quantityInCart}</div>
+      <div className={styles.cartItemInfo}>
+        <div className={styles.cartItemName}>Prekė: {item.name}</div>
+        <div className={styles.cartItemQuantity}>Kiekis: {quantityInCart}</div>
+      </div>
       <Button
         variant="danger"
         onClick={() => {
